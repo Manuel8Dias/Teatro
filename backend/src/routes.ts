@@ -1,11 +1,11 @@
 import express from 'express'
 
-const routes =express.Router()
+const routes = express.Router()
+
+//npm run dev
 
 routes.get('/', () => {
-    return (
-        'Hello World!'
-    )
+    return('Hello World')
 })
 
 export default routes;
