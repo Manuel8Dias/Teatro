@@ -16,11 +16,37 @@ class EncenadoresController {
     }
 
     async show(request: Request, response: Response) {
-        //FALTA
+        const { id } = request.params
+
+        const encenador = await knex('encenadores').where('id', id).first()
+        
+        if(!encenador) {
+            return response.status(400).json( {message: 'Encenador não encontrado!'})
+        }
+
+        return response.json(encenador)
     }
 
     async create(request: Request, response: Response) {
-        //FALTA
+        const {
+            nome,
+            biografia,
+        } = request.body
+
+        const trx = await knex.transaction()
+
+        const encenador = {
+            nome,
+            biografia,
+        }
+
+        const insetedIds = await trx('encenadores').insert(encenador)
+        
+        const encenador_id = insetedIds[0]
+        
+        await trx.commit()
+
+        return response.json({id: encenador_id, ...encenador})
     }
 }
 

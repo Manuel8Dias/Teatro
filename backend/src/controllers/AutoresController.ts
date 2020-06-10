@@ -16,11 +16,37 @@ class AutoresController {
     }
 
     async show(request: Request, response: Response) {
-        //FALTA
+        const { id } = request.params
+
+        const autor = await knex('autores').where('id', id).first()
+
+        if(!autor) {
+            return response.status(400).json({ message: 'Autor não encontrado!' })
+        }
+        
+        return response.json(autor)
     }
 
     async create(request: Request, response: Response) {
-        //FALTA
+        const {
+            nome,
+            biografia,
+        } = request.body
+
+        const trx = await knex.transaction()
+
+        const autor = {
+            nome,
+            biografia
+        }
+
+        const insertedIds = await trx('autores').insert(autor)
+
+        const autor_id = insertedIds[0]
+
+        await trx.commit()
+
+        return response.json({ id: autor_id, ...autor})
     }
 }
 
