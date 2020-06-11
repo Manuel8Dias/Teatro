@@ -1,14 +1,8 @@
 import express, { Router, Request, Response } from 'express'
-import AutoresController from './controllers/AutoresController'
-import EncenadoresController from './controllers/EncenadoresController'
-import ActoresController from './controllers/ActoresController'
-import CenografiaController from './controllers/CenografiaController'
+import SalasController from './controllers/SalasController'
 
 const routes = express.Router()
-const autoresController = new AutoresController()
-const encenadoresController = new EncenadoresController()
-const actoresController = new ActoresController()
-const cenografiaController = new CenografiaController()
+const salasController = new SalasController()
 
 //npm run dev
 
@@ -18,31 +12,11 @@ routes.get('/', (Request, Response) => {
 
 //Espectáculos
 
-//Autores
-routes.get('/autores', autoresController.index)
-routes.get('/autores/:id', autoresController.show)
-routes.post('/autores', autoresController.create)
-
-//Encenadores
-routes.get('/encenadores', encenadoresController.index)
-routes.get('/encenadores/:id', encenadoresController.show)
-routes.post('/encenadores', encenadoresController.create)
-
-//Actores
-routes.get('/actores', actoresController.index)
-routes.get('/actores/:id', actoresController.show)
-routes.post('/actores', actoresController.create)
-
-//Cenografia
-routes.get('/cenografia', cenografiaController.index)
-routes.get('/cenografia/:id', cenografiaController.show)
-routes.post('/cenografia', cenografiaController.create)
-
-//Fifurinos
-
-//Desenho de Luz
 
 //Sala
+routes.get('/salas', salasController.index)
+routes.get('/sala/:id', salasController.show)
+routes.post('/salas', salasController.create)
 
 
-export default routes;
+export default routes
