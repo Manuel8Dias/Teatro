@@ -1,8 +1,11 @@
 import express, { Router, Request, Response } from 'express'
 import SalasController from './controllers/SalasController'
+import EspectaculosController from './controllers/EspectaculosController'
+
 
 const routes = express.Router()
 const salasController = new SalasController()
+const espectaculosController = new EspectaculosController()
 
 //npm run dev
 
@@ -11,11 +14,13 @@ routes.get('/', (Request, Response) => {
 })
 
 //Espectáculos
-
+routes.get('/espectaculos', espectaculosController.index)
+routes.get('/espectaculos/:id', espectaculosController.show)
+routes.post('/espectaculos', espectaculosController.create)
 
 //Sala
 routes.get('/salas', salasController.index)
-routes.get('/sala/:id', salasController.show)
+routes.get('/salas/:id', salasController.show)
 routes.post('/salas', salasController.create)
 
 

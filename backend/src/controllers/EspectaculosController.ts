@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import knex from '../database/connection'
 
-class EspectaculosControiller {
+class EspectaculosController {
     
     async index(request: Request, response: Response) {
         const espectaculos = await knex('espectaculos').select('*')
@@ -9,7 +9,7 @@ class EspectaculosControiller {
         const serializedEspectaculos = espectaculos.map( espectaculo =>{
             return {
                 id: espectaculo.id,
-                cartaz: espectaculo.cartaz,
+                cartaz: `http://localhost:3333/uploads/${espectaculo.cartaz}`,
                 autor: espectaculo.autor,
                 encenador: espectaculo.encenador,
                 actores: espectaculo.actores,
@@ -17,6 +17,7 @@ class EspectaculosControiller {
                 figurinos: espectaculo.figurinos,
                 desenhoDeLuz: espectaculo.desenhoDeLuz,
                 sala: espectaculo.sala,
+                edificio:espectaculo.edificio,
                 cidade: espectaculo.cidade,
                 estreia: espectaculo.estreia,
             }
@@ -38,8 +39,44 @@ class EspectaculosControiller {
     }
 
     async  create(request: Request, response: Response) {
-        //FALTA!!
+        const {
+            cartaz,
+            autor,
+            encenador,
+            actores,
+            cenografia,
+            figurinos,
+            desenhoDeLuz,
+            sala,
+            edificio,
+            cidade,
+            estreia,
+        } = request.body
+
+        const trx = await knex.transaction()
+
+        const espectaculo = {
+            cartaz,
+            autor,
+            encenador,
+            actores,
+            cenografia,
+            figurinos,
+            desenhoDeLuz,
+            sala,
+            edificio,
+            cidade,
+            estreia,
+        }
+
+        const isertedIds = await trx('espectaculos').insert(espectaculo)
+        
+        const espectaculos_id = isertedIds[0]
+
+        trx.commit()
+
+        return response.json({ id: espectaculos_id, ...espectaculo})
     }
 }
 
-export default EspectaculosControiller
+export default EspectaculosController

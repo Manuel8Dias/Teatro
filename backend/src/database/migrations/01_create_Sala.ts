@@ -1,6 +1,6 @@
 import Knex from 'knex'
 
-export async function sala(knex: Knex) {
+export async function up(knex: Knex) {
     return knex.schema.createTable('salas', table => {
         table.increments('id').primary()
         table.string('nome').notNullable
