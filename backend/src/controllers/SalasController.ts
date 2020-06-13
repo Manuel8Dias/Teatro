@@ -53,6 +53,42 @@ class SalasController {
 
         return response.json({ id: salas_id, ...sala })
     }
+
+    async apagar(request: Request, response: Response) {
+        const { id } = request.params
+
+        const sala = await knex('salas').where('id', id).del()
+
+        if(!sala) {
+            return response.status(400).json({ message: 'Sala não encontrada!'})
+        }
+
+        return response.json({ message: 'Sala Apagada!'})
+    }
+
+    async actualizar(request: Request, response: Response) {
+        const { id } = request.params
+
+        const {
+            nome,
+            edificio,
+            cidade
+        }=  request.body
+
+        const sala = {
+            nome,
+            edificio,
+            cidade,
+        }
+
+        const salaActualizada = await knex('salas').where('id', id).update(sala)
+
+        if (!salaActualizada) {
+            return response.json({ message: 'Sala não actualizada'})
+        }
+
+        return response.json(salaActualizada)
+    }
 }
 
 export default SalasController

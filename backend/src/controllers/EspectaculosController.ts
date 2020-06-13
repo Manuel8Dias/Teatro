@@ -77,6 +77,58 @@ class EspectaculosController {
 
         return response.json({ id: espectaculos_id, ...espectaculo})
     }
+
+    async apagar(request: Request, response: Response) {
+        const { id } = request.params
+
+        const espectaculo = await knex('espectaculos').where('id', id).del()
+
+        if(!espectaculo) {
+            return response.status(400).json({message: 'Espectáculo não encontrado!'})
+        }
+
+        return response.json({ message: 'Espectaculo apagado!'})
+    }
+
+    async actualizar(request: Request, response: Response) {
+        const { id } = request.params
+
+        const {
+            cartaz,
+            autor,
+            encenador,
+            actores,
+            cenografia,
+            figurinos,
+            desenhoDeLuz,
+            sala,
+            edificio,
+            cidade,
+            estreia,
+        }=  request.body
+
+        const espectaculo = {
+            cartaz,
+            autor,
+            encenador,
+            actores,
+            cenografia,
+            figurinos,
+            desenhoDeLuz,
+            sala,
+            edificio,
+            cidade,
+            estreia,
+        }
+
+        const espectaculoActualizado = await knex('salas').where('id', id).update(espectaculo)
+
+        if (!espectaculoActualizado) {
+            return response.json({ message: 'Espectaculo não actualizada'})
+        }
+
+        return response.json(espectaculoActualizado)
+    }
 }
 
 export default EspectaculosController
