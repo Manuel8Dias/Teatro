@@ -10,6 +10,7 @@ class EspectaculosController {
             return {
                 id: espectaculo.id,
                 cartaz: `http://localhost:3333/uploads/${espectaculo.cartaz}`,
+                nome: espectaculo.nome,
                 autor: espectaculo.autor,
                 encenador: espectaculo.encenador,
                 actores: espectaculo.actores,
@@ -40,6 +41,7 @@ class EspectaculosController {
 
     async  create(request: Request, response: Response) {
         const {
+            nome,
             cartaz,
             autor,
             encenador,
@@ -56,6 +58,7 @@ class EspectaculosController {
         const trx = await knex.transaction()
 
         const espectaculo = {
+            nome,
             cartaz,
             autor,
             encenador,
@@ -94,6 +97,7 @@ class EspectaculosController {
         const { id } = request.params
 
         const {
+            nome,
             cartaz,
             autor,
             encenador,
@@ -108,6 +112,7 @@ class EspectaculosController {
         }=  request.body
 
         const espectaculo = {
+            nome,
             cartaz,
             autor,
             encenador,

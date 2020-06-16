@@ -3,6 +3,7 @@ import Knex from 'knex'
 export async function up(knex: Knex) {
     return knex.schema.createTable('espectaculos', table => {
         table.increments('id').primary()
+        table.string('nome').notNullable()
         table.string('cartaz') // Pôr só o nnome do ficheiro com a extensão
         table.string('autor').notNullable()
         table.string('encenador').notNullable()
