@@ -42,18 +42,18 @@ const Home = () => {
             <div className="espectaculo" id="espectaculos">
                 {espectaculos.map( (Espectaculo) => {
                     return(
-                        <article key={ Espectaculo.id }>
+                        <article key={ Espectaculo.id } className="espectaculoCard">
                             <img src={ Espectaculo.cartaz } alt={ Espectaculo.nome }/>
-                            <h1>{ Espectaculo.nome }</h1>
-                            <h2>Autor: { Espectaculo.autor }</h2>
-                            <h2>Encenador: { Espectaculo.encenador }</h2>
-                            <h2>Actores: { Espectaculo.actores }</h2>
-                            <h2>Cenografia: { Espectaculo.cenografia }</h2>
-                            <h2>Desenho de Luz: { Espectaculo.desenhoDeLuz }</h2>
-                            <h2>Sala: { Espectaculo.sala }</h2>
-                            <h2>Edificio: { Espectaculo.edificio }</h2>
-                            <h2>Cidade: { Espectaculo.cidade }</h2>
-                            <h2>Data de Estreia: { Espectaculo.estreia }</h2>
+                            <h1 className="dados">{ Espectaculo.nome }</h1>
+                            <h2 className="dados">Autor: { Espectaculo.autor }</h2>
+                            <h2 className="dados">Encenador: { Espectaculo.encenador }</h2>
+                            <h2 className="dados">Actores: { Espectaculo.actores }</h2>
+                            <h2 className="dados">Cenografia: { Espectaculo.cenografia }</h2>
+                            <h2 className="dados">Desenho de Luz: { Espectaculo.desenhoDeLuz }</h2>
+                            <h2 className="dados">Sala: { Espectaculo.sala }</h2>
+                            <h2 className="dados">Edificio: { Espectaculo.edificio }</h2>
+                            <h2 className="dados">Cidade: { Espectaculo.cidade }</h2>
+                            <h2 className="dados">Data de Estreia: { Espectaculo.estreia }</h2>
                             <div className="botaoDetalhes">
                                 <Link className="detalhes" to='/espectaculo/:id'>Detalhes</Link>
                             </div> {/* End botaoNovo */}

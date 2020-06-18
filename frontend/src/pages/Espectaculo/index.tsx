@@ -19,7 +19,6 @@ interface Teatro {
 }
 
 const Espectaculo = () => {
-
     
     const [espectaculos , setEspectaculos] = useState<Teatro[]>([])
 
