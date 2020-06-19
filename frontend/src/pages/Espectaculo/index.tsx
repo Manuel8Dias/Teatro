@@ -32,27 +32,75 @@ const Espectaculo = () => {
     }, [])
 
     return (
-        <div className="espectaculo" id="espectaculos">
-        {espectaculos.map( (Espectaculo) => {
-            return(
-                <article key={ Espectaculo.id }>
-                    <img src={ Espectaculo.cartaz } alt={ Espectaculo.nome }/>
-                    <h1>{ Espectaculo.nome }</h1>
-                    <h2>Autor: { Espectaculo.autor }</h2>
-                    <h2>Encenador: { Espectaculo.encenador }</h2>
-                    <h2>Actores: { Espectaculo.actores }</h2>
-                    <h2>Cenografia: { Espectaculo.cenografia }</h2>
-                    <h2>Desenho de Luz: { Espectaculo.desenhoDeLuz }</h2>
-                    <h2>Sala: { Espectaculo.sala }</h2>
-                    <h2>Edificio: { Espectaculo.edificio }</h2>
-                    <h2>Cidade: { Espectaculo.cidade }</h2>
-                    <h2>Data de Estreia: { Espectaculo.estreia }</h2>
-                </article>
-                
-            )
-        })}
-    </div>
-    )
-}
+        <div className="espectaculo">
+           
+        { espectaculos.map(Espectaculo => (
+             <div key={Espectaculo.id} className="espectaculoBorder">
+             
+                 <h1 >{ Espectaculo.nome }</h1>
 
+                 <div className="registoEspectaculo">
+
+                  <aside className="cartaz">
+                     <img src={Espectaculo.cartaz} alt="Cartaz"/>
+                 </aside> 
+
+                 <div className="dadosEspectaculo">
+
+                     <div className="infoEspectaculo">
+                         <h4>Autor: </h4>
+                         <p>{ Espectaculo.autor }</p>
+                     </div>
+
+                     <div className="infoEspectaculo">
+                         <h4>Encenador: </h4>
+                         <p>{ Espectaculo.encenador }</p>
+                     </div>
+
+                     <div className="infoEspectaculo">
+                         <h4>Actores: </h4>
+                         <p>{ Espectaculo.actores }</p>
+                     </div>
+
+                     <div className="infoEspectaculo">
+                         <h4>Cenografia: </h4>
+                         <p>{ Espectaculo.cenografia }</p>
+                     </div>
+
+                     <div className="infoEspectaculo">
+                         <h4>Figurinos: </h4>
+                         <p>{ Espectaculo.figurinos }</p>
+                     </div>
+
+                     <div className="infoEspectaculo">
+                         <h4>Desenho de Luz: </h4>
+                         <p>{ Espectaculo.desenhoDeLuz }</p>
+                     </div>
+
+                     <div className="infoEspectaculo">
+                         <h4>Sala: </h4>
+                         <p> { Espectaculo.sala } - { Espectaculo.edificio }</p>  
+                     </div>
+
+                     <div className="infoEspectaculo">
+                         <h4>Cidade: </h4>
+                         <p>{ Espectaculo.cidade }</p>  
+                     </div>
+
+                     <div className="infoEspectaculo">
+                         <h4>Data da Estreia: </h4>
+                         <p>{ Espectaculo.estreia }</p>  
+                     </div>
+
+                 </div> {/* END dadosEspectaculo */}
+
+                 </div> {/* END registoEspectaculo */}
+                 
+             </div> //espectaculoCard end 
+         ))} 
+
+     </div>
+    )
+
+}
 export default Espectaculo

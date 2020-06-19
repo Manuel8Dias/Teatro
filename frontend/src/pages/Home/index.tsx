@@ -39,26 +39,38 @@ const Home = () => {
                 <Link className="novo" to="/novo">Novo Espectáculo</Link>
             </div> {/* End botaoNovo */}
 
-            <div className="espectaculo" id="espectaculos">
+            <div className="main" id="espectaculos">
                 {espectaculos.map( (Espectaculo) => {
                     return(
-                        <article key={ Espectaculo.id } className="espectaculoCard">
-                            <img src={ Espectaculo.cartaz } alt={ Espectaculo.nome }/>
-                            <h1 className="dados">{ Espectaculo.nome }</h1>
-                            <h2 className="dados">Autor: { Espectaculo.autor }</h2>
-                            <h2 className="dados">Encenador: { Espectaculo.encenador }</h2>
-                            <h2 className="dados">Actores: { Espectaculo.actores }</h2>
-                            <h2 className="dados">Cenografia: { Espectaculo.cenografia }</h2>
-                            <h2 className="dados">Desenho de Luz: { Espectaculo.desenhoDeLuz }</h2>
-                            <h2 className="dados">Sala: { Espectaculo.sala }</h2>
-                            <h2 className="dados">Edificio: { Espectaculo.edificio }</h2>
-                            <h2 className="dados">Cidade: { Espectaculo.cidade }</h2>
-                            <h2 className="dados">Data de Estreia: { Espectaculo.estreia }</h2>
-                            <div className="botaoDetalhes">
-                                <Link className="detalhes" to='/espectaculo/:id'>Detalhes</Link>
-                            </div> {/* End botaoNovo */}
-                        </article>
-                        
+                        <div key={Espectaculo.id} className="espectaculoCard">
+                
+                    <h1 >{ Espectaculo.nome }</h1>
+
+                    <div className="dados">
+                        <h4>Autor:</h4>
+                        <p>{ Espectaculo.autor }</p>
+                    </div>
+
+                    <div className="dados">
+                        <h4>Encenador: </h4>
+                        <p>{ Espectaculo.encenador }</p>
+                    </div>
+
+                    <div className="dados">
+                        <h4>Actor:</h4>
+                        <p>{ Espectaculo.actores }</p>
+                    </div>
+
+                    <div className="dados">
+                        <h4>Estreia:</h4>
+                        <p>{ Espectaculo.estreia }</p>  
+                    </div>
+                    <div className="botao">
+                        <Link className="detalhes" to="espectaculo/:id">
+                            Ver mais
+                        </Link>
+                    </div>
+                </div> //espectaculoCard end 
                     )
                 })}
             </div>{/* End espectaculo */}
