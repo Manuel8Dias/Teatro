@@ -31,8 +31,6 @@ const Home = () => {
         loadApi()
     }, [])
 
-
-    
     return (
         <div className="homeContainer">
             <div className="botaoNovo">
