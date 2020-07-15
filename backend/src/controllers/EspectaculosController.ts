@@ -129,7 +129,7 @@ class EspectaculosController {
         const espectaculoActualizado = await knex('espectaculos').where('id', id).update(espectaculo)
 
         if (!espectaculoActualizado) {
-            return response.json({ message: 'Espectaculo não actualizada'})
+            return response.json({ message: 'Espectaculo não actualizado'})
         }
 
         return response.json(espectaculoActualizado)

@@ -8,7 +8,7 @@
     "knex:migrate": "knex --knexfile knexfile.ts migrate:latest"
   },
   "keywords": [],
-  "author": "",
+  "author": "Manuel Dias",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
