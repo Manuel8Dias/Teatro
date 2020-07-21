@@ -24,7 +24,7 @@ const Espectaculo = () => {
 
     useEffect (()=> {
         async function loadApi() {
-            const espectaculo = await api.get('espectaculos')
+            const espectaculo = await api.get('espectaculos/')
             setEspectaculos(espectaculo.data)
         }
 
@@ -35,7 +35,7 @@ const Espectaculo = () => {
         <div className="espectaculo">
 
         { espectaculos.map(Espectaculo => (
-            <div key={Espectaculo.id} className="espectaculoBorder">
+            <div key={ Espectaculo.id } className="espectaculoBorder">
 
                 <h1 >{ Espectaculo.nome }</h1>
 

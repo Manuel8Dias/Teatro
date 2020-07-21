@@ -4,7 +4,7 @@ import './styles.css'
 import api from '../../services/api'
 
 interface Teatro {
-    id: number
+    id: number,
     nome: string,
     cartaz: string,
     autor: string,
@@ -40,7 +40,7 @@ const Home = () => {
             <div className="main" id="espectaculos">
                 {espectaculos.map( (Espectaculo) => {
                     return(
-                        <div key={Espectaculo.id} className="espectaculoCard">
+                        <div key={ Espectaculo.id } className="espectaculoCard">
                 
                     <h1 >{ Espectaculo.nome }</h1>
 
@@ -64,7 +64,7 @@ const Home = () => {
                         <p>{ Espectaculo.estreia }</p>  
                     </div>
                     <div className="botao">
-                        <Link className="detalhes" to="espectaculo/:id">
+                        <Link className="detalhes" to="espectaculos/:id">
                             Ver mais
                         </Link>
                     </div>
