@@ -1,4 +1,5 @@
 import path from 'path'
+// npm run dev - Linha de Comandos para correr backend
 
 module.exports = {
   client: 'sqlite3',
