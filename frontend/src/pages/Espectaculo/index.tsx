@@ -24,7 +24,7 @@ const Espectaculo = () => {
 
     useEffect (()=> {
         async function loadApi() {
-            const espectaculo = await api.get('espectaculos/')
+            const espectaculo = await api.get('espectaculos/') //*${:id}')
             setEspectaculos(espectaculo.data)
         }
 
